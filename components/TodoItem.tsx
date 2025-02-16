@@ -18,9 +18,9 @@ export default function TodoItem({title, archived = false}: ItemProps) {
         <ThemedText type={"default"} numberOfLines={1}
                     ellipsizeMode="tail" style={[styles.title, archived && styles.strikethrough]}>{title}</ThemedText>
       </ThemedView>
-      {!archived && <Pressable>
-          <IconSymbol name={'trash'} color={'#ed8480'}/>
-      </Pressable>}
+      <Pressable>
+        <IconSymbol name={'trash'} color={'#ed8480'}/>
+      </Pressable>
     </ThemedView>
   )
 }
