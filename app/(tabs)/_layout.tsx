@@ -35,10 +35,10 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="edit-todo"
+        name="settings"
         options={{
-          title: 'Add Todo',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="edit.todo" color={color} />,
+          title: 'Settings',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="settings" color={color} />,
         }}
       />
     </Tabs>

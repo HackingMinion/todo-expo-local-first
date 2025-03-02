@@ -16,6 +16,7 @@ const MAPPING = {
   'trash': 'delete',
   'checkbox-unchecked': 'check-box',
   'checkbox-checked': 'check-box-outline-blank',
+  'settings': 'settings',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

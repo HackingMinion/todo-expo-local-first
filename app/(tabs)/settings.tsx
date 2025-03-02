@@ -1,10 +1,10 @@
 import {Image, StyleSheet} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import {Todos} from "@/components/Todos";
-import {todos$ as _todos$} from '@/utils/SupaLegend';
-import {AddTodo} from "@/components/AddTodo";
+import {ThemedText} from '@/components/ThemedText';
+import {ThemedView} from '@/components/ThemedView';
+import React from "react";
 
-export default function HomeScreen() {
+export default function SettingsScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{light: '#A1CEDC', dark: '#1D3D47'}}
@@ -14,13 +14,19 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
-      <AddTodo/>
-      <Todos todos$={_todos$}/>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Settings</ThemedText>
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
   reactLogo: {
     height: 178,
     width: 290,
