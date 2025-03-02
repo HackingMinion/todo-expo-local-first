@@ -1,22 +1,26 @@
 import {Pressable, StyleSheet} from 'react-native';
-
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {IconSymbol} from "@/components/ui/IconSymbol";
+import {Tables} from "@/utils/database.types";
+import {toggleDone} from '@/utils/SupaLegend'
 
-type ItemProps = { title: string, archived?: boolean };
 
-export default function TodoItem({title, archived = false}: ItemProps) {
-  const checkIcon = archived ? 'checkbox-unchecked' : 'checkbox-checked';
+export const TodoItem = ({ todo }: { todo: Tables<'todos'> }) => {
+  const checkIcon = todo.done ? 'checkbox-unchecked' : 'checkbox-checked';
+
+  const handlePress = () => {
+    toggleDone(todo.id)
+  }
 
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.leftContainer}>
-        <Pressable>
+        <Pressable onPress={handlePress}>
           <IconSymbol name={checkIcon} color={'#80ed84'}/>
         </Pressable>
         <ThemedText type={"default"} numberOfLines={1}
-                    ellipsizeMode="tail" style={[styles.title, archived && styles.strikethrough]}>{title}</ThemedText>
+                    ellipsizeMode="tail" style={[styles.title, todo.done && styles.strikethrough]}>{todo.text}</ThemedText>
       </ThemedView>
       <Pressable>
         <IconSymbol name={'trash'} color={'#ed8480'}/>

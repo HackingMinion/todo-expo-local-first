@@ -5,13 +5,15 @@ import {ThemedView} from '@/components/ThemedView';
 import React, {useState} from "react";
 import {useThemeColor} from "@/hooks/useThemeColor";
 import {ThemedInput} from "@/components/ThemedInput";
+import {addTodo} from "@/utils/SupaLegend";
 
 export default function EditTodoScreen() {
   const [text, setText] = useState('');
   const color = useThemeColor({}, 'text');
 
-  const saveTodo = () => {
-    console.log('saveTodo');
+  const handleSave = () => {
+    setText('')
+    addTodo(text)
   }
 
   return (
@@ -31,7 +33,7 @@ export default function EditTodoScreen() {
           value={text}
           onChangeText={setText}
         />
-        <Pressable style={styles.button} onPress={saveTodo}>
+        <Pressable style={styles.button} onPress={handleSave}>
           <ThemedText type='default'>Save</ThemedText>
         </Pressable>
       </ThemedView>
